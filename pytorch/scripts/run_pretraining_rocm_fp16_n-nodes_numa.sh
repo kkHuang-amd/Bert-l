@@ -176,14 +176,13 @@ if [ "$create_logfile" = "true" ] ; then
 fi
 
 set -x
-echo $CMD
-#if [ -z "$LOGFILE" ] ; then
-#   $CMD
-#else
-#   (
-#     $CMD
-#   ) |& tee $LOGFILE
-#fi
+if [ -z "$LOGFILE" ] ; then
+   $CMD
+else
+   (
+     $CMD
+   ) |& tee $LOGFILE
+fi
 
 set +x
 

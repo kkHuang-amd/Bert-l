@@ -50,7 +50,7 @@ done
 
 CONFIG_FILES=$(ls configs/*)
 
-for count in $(seq 1 1); do
+for count in $(seq 1 5); do
     mkdir -p "results/HYABUSA/128-nodes/${count}"
     echo $count
     for file in ${CONFIG_FILES}; do
