@@ -1,0 +1,113 @@
+
+----------------------- /mnt/beegfs/modulefiles_internal -----------------------
+   agt/3.1.15.0    miperf/1.0    rocm/5.3.1-rc2    rocm/5.4.0-rc1
+
+--------------------------- /mnt/beegfs/modulefiles ----------------------------
+   StdEnv                             (L)
+   aocl/aocc/3.2.0
+   aocl/aocc/4.0.0                    (D)
+   aocl/gcc/3.2.0
+   aocl/gcc/4.0.0                     (D)
+   aomp/11.12-0
+   aomp/13.0-2
+   aomp/13.0-3
+   aomp/13.0-4
+   aomp/13.0-5
+   aomp/13.0-6
+   aomp/14.0-0
+   aomp/14.0-1
+   aomp/14.0-2
+   aomp/14.0-3
+   aomp/15.0-1
+   aomp/15.0-2
+   aomp/15.0-3
+   aomp/16.0-0
+   aomp/16.0-1
+   aomp/16.0-2
+   aomp/16.0-3                        (D)
+   apex/0.1_rocm_5.2
+   apex/0.1_rocm_5.4                  (D)
+   cmake/cmake-3.17.5
+   deepspeed/0.7.5
+   go/1.17.2
+   ipm/2.0.6
+   mvapich2-gdr/2.3.7/gnu-mpirun
+   mvapich2-gdr/2.3.7/gnu-slurm
+   mvapich2-gdr/2.3.7/intel-mpirun
+   mvapich2-gdr/2.3.7/intel-slurm     (D)
+   omniperf/1.0.6
+   omnitrace/1.7.3
+   openmpi/4.1.4-aomp
+   openmpi/4.1.4-gcc
+   openmpi/4.1.4-rocm-llvm
+   openmpi/4.1.4-siemens-gcc
+   openmpi/5.0.0-rocm-afar001-732     (D)
+   pnetcdf/1.12.3-openmpi-aomp
+   pnetcdf/1.12.3-openmpi-gcc
+   pnetcdf/1.12.3-openmpi-siemens-gcc (D)
+   psmpi/5.6.0-1-gcc
+   pytorch/1.12_rocm_5.4
+   pytorch/1.13_rocm_5.2_experimental (D)
+   rocm/4.5.2
+   rocm/5.1.0
+   rocm/5.1.3
+   rocm/5.2.0
+   rocm/5.2.3
+   rocm/5.3.0                         (L)
+   rocm/5.4.0
+   rocm/5.4.1
+   rocm/5.4.2
+   rocm/5.4.3                         (D)
+   rocm-afar/001-732
+   siemens-gcc/2022.06-6
+   siemens-gcc/2022.09-7              (D)
+   singularity/3.9.9                  (D)
+   tensorflow/2.9.1_rocm
+   uprof/3.6
+
+---- /mnt/beegfs/software/spack/share/spack/modules/linux-ubuntu20.04-zen2 -----
+   adios2/2.8.2                           likwid/5.2.1
+   autoconf-archive/2022.02.11            llvm/11.1.0
+   bazel/4.0.0                            mpfr/4.1.0
+   binutils/2.34                          mpich/4.0.2
+   boost/1.80.0                           mpip/3.5
+   cmake/3.16.3                           ncdu/1.17
+   cmake/3.24.3                    (D)    netcdf-c/4.9.0
+   cuda/11.5.2                            netcdf-fortran/4.6.0
+   cuda/11.7.1                     (D)    openblas/0.3.21
+   fftw/3.3.10                            openmpi/4.1.4
+   fl/0.79.47                             osu-micro-benchmarks/7.0
+   gcc/11.3.0                             parallel-netcdf/1.12.3
+   gh/2.5.1                               py-numpy/1.23.4
+   gmp/6.2.1                              python/3.8.10
+   go/1.18                         (D)    python/3.9.13                  (D)
+   hdf5/1.12.2                            scotch/7.0.1
+   hpctoolkit/2022.10.01                  singularity/3.8.5
+   hpcviewer/2022.10                      ucx/1.13.1
+   intel-oneapi-compilers/2022.2.1        universal-ctags/5.9.20210912.0
+   intel-oneapi-mkl/2022.2.1              unzip/6.0
+   intel-oneapi-vtune/2022.4.1            valgrind/3.19.0
+   kokkos/3.7.00
+
+----------------------- /usr/share/lmod/lmod/modulefiles -----------------------
+   Core/lmod/6.6    Core/settarg/6.6
+
+  Where:
+   D:  Default Module
+   L:  Module is loaded
+
+Use "module spider" to find all possible modules.
+Use "module keyword key1 key2 ..." to search for all possible modules matching
+any of the "keys".
+
+killing all previous python processes
+mun-node-5
+/datasets/mlperf_dataset/wiki_20200101
+/datasets/mlperf_dataset/wiki_20200101/hdf5_4320_shards_varlength
+enable distributed_lamb
+CMD => python3 -m mlperf_utils.bind_launch --no_membind --nnuma_nodes 8 --nsockets_per_node 2 --ncores_per_socket 64 --node_rank 0 --nnodes 128 --master_addr mun-node-5 --master_port 23456 --nproc_per_node=8  .//run_pretraining.py --input_dir=/datasets/mlperf_dataset/wiki_20200101/hdf5_4320_shards_varlength --output_dir=.//results/checkpoints --bert_config_path=/datasets/mlperf_dataset/wiki_20200101/bert_config.json --bert_model=bert-large-uncased --train_batch_size=2 --max_seq_length=512 --max_predictions_per_seq=76 --max_steps=645 --warmup_proportion=0.0 --warmup_steps=0 --start_warmup_step=0 --learning_rate=0.0033 --seed=22213 --fp16 --init_checkpoint=/datasets/mlperf_dataset/wiki_20200101/model.ckpt-28252.pt --gradient_accumulation_steps=1  --allreduce_post_accumulation --allreduce_post_accumulation_fp16 --opt_lamb_beta_1=0.75 --opt_lamb_beta_2=0.9 --weight_decay_rate=0.01 --do_train --phase2 --skip_checkpoint --train_mlm_accuracy_window_size=0 --target_mlm_accuracy=0.720 --max_samples_termination=12000000 --dense_seq_output --unpad --exchange_padding --fused_gelu_bias --fused_mha --distributed_lamb --dwu-num-rs-pg=1 --dwu-num-ar-pg=1 --dwu-num-ag-pg=1 --dwu-num-blocks=1 --eval_dir=/datasets/mlperf_dataset/wiki_20200101/eval_varlength --eval_iter_start_samples=325000 --eval_iter_samples=325000 --eval_batch_size=16 --cache_eval_data --num_eval_examples 10000 --log_freq=1
+Logs written to .//results/bert_lamb_pretraining.pyt_bert_pretraining_phase2_fp16_gbs16_dis-lamb_lr-0.0033_max-ch-8_mun-node-5_torchdpp.230303030421.log
++ echo python3 -m mlperf_utils.bind_launch --no_membind --nnuma_nodes 8 --nsockets_per_node 2 --ncores_per_socket 64 --node_rank 0 --nnodes 128 --master_addr mun-node-5 --master_port 23456 --nproc_per_node=8 .//run_pretraining.py --input_dir=/datasets/mlperf_dataset/wiki_20200101/hdf5_4320_shards_varlength --output_dir=.//results/checkpoints --bert_config_path=/datasets/mlperf_dataset/wiki_20200101/bert_config.json --bert_model=bert-large-uncased --train_batch_size=2 --max_seq_length=512 --max_predictions_per_seq=76 --max_steps=645 --warmup_proportion=0.0 --warmup_steps=0 --start_warmup_step=0 --learning_rate=0.0033 --seed=22213 --fp16 --init_checkpoint=/datasets/mlperf_dataset/wiki_20200101/model.ckpt-28252.pt --gradient_accumulation_steps=1 --allreduce_post_accumulation --allreduce_post_accumulation_fp16 --opt_lamb_beta_1=0.75 --opt_lamb_beta_2=0.9 --weight_decay_rate=0.01 --do_train --phase2 --skip_checkpoint --train_mlm_accuracy_window_size=0 --target_mlm_accuracy=0.720 --max_samples_termination=12000000 --dense_seq_output --unpad --exchange_padding --fused_gelu_bias --fused_mha --distributed_lamb --dwu-num-rs-pg=1 --dwu-num-ar-pg=1 --dwu-num-ag-pg=1 --dwu-num-blocks=1 --eval_dir=/datasets/mlperf_dataset/wiki_20200101/eval_varlength --eval_iter_start_samples=325000 --eval_iter_samples=325000 --eval_batch_size=16 --cache_eval_data --num_eval_examples 10000 --log_freq=1
+python3 -m mlperf_utils.bind_launch --no_membind --nnuma_nodes 8 --nsockets_per_node 2 --ncores_per_socket 64 --node_rank 0 --nnodes 128 --master_addr mun-node-5 --master_port 23456 --nproc_per_node=8 .//run_pretraining.py --input_dir=/datasets/mlperf_dataset/wiki_20200101/hdf5_4320_shards_varlength --output_dir=.//results/checkpoints --bert_config_path=/datasets/mlperf_dataset/wiki_20200101/bert_config.json --bert_model=bert-large-uncased --train_batch_size=2 --max_seq_length=512 --max_predictions_per_seq=76 --max_steps=645 --warmup_proportion=0.0 --warmup_steps=0 --start_warmup_step=0 --learning_rate=0.0033 --seed=22213 --fp16 --init_checkpoint=/datasets/mlperf_dataset/wiki_20200101/model.ckpt-28252.pt --gradient_accumulation_steps=1 --allreduce_post_accumulation --allreduce_post_accumulation_fp16 --opt_lamb_beta_1=0.75 --opt_lamb_beta_2=0.9 --weight_decay_rate=0.01 --do_train --phase2 --skip_checkpoint --train_mlm_accuracy_window_size=0 --target_mlm_accuracy=0.720 --max_samples_termination=12000000 --dense_seq_output --unpad --exchange_padding --fused_gelu_bias --fused_mha --distributed_lamb --dwu-num-rs-pg=1 --dwu-num-ar-pg=1 --dwu-num-ag-pg=1 --dwu-num-blocks=1 --eval_dir=/datasets/mlperf_dataset/wiki_20200101/eval_varlength --eval_iter_start_samples=325000 --eval_iter_samples=325000 --eval_batch_size=16 --cache_eval_data --num_eval_examples 10000 --log_freq=1
++ set +x
+finished phase2
