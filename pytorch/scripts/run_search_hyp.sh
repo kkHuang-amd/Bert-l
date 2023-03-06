@@ -58,6 +58,6 @@ for count in $(seq 1 5); do
 	log="results/HYABUSA/128-nodes/${count}/${log}.log"
 
 	source $file
-        ./scripts/run_pretraining_rocm_fp16_n-nodes_numa.sh 8 1 > $log 2>&1
+        ./scripts/run_pretraining_rocm_fp16_n-nodes_numa.sh 8 1 2>&1 | tee $log
     done
 done
